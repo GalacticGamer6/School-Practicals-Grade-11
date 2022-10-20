@@ -6,9 +6,9 @@ import java.util.Locale;
 
 public class Student {
 
-    private static String name;
-    private static String surname;
-    private static LocalDate date;
+    private  String name;
+    private  String surname;
+    private  LocalDate date;
     
     
     public Student(String n, String sn, LocalDate d){

@@ -3,6 +3,7 @@ package Date_Time;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
@@ -24,14 +25,24 @@ public class StudentManager {
             
             while(sc.hasNext()){
                 
-                Scanner line_sc = new Scanner(sc.nextLine());
+                String line = sc.nextLine();
+                Scanner line_sc = new Scanner(line).useDelimiter("#");
+                
                 String name = line_sc.next();
                 String surname = line_sc.next();
+                String date = line_sc.next();
                 
-                DateTimeFormatter input_formatter = DateTimeFormatter.ofPattern("")
+                DateTimeFormatter input_formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                LocalDate converted_date = LocalDate.parse(date, input_formatter);
                 
+                Students[count] = new Student(name,surname,converted_date);
+                count++;
                 
+                line_sc.close();
             }
+            
+            sc.close();
+            
             
             
         } catch (FileNotFoundException ex) {
@@ -39,5 +50,21 @@ public class StudentManager {
         }
         
     }
+        
+        public String toString(){
+            
+            String output = "";
+            
+            for(int i = 0; i < count; i++){
+                
+                Student s = Students[i];
+                output += s.toString() + "\n" ;
+                
+            }
+            
+            return output;
+        }
+        
+    }
     
-}
+
