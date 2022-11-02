@@ -8,7 +8,7 @@ public class Activity {
     private String description;
     private double cost;
     private LocalDate actDate;
-    public final double INSURANCE_COST = 105.25;
+    public static final double INSURANCE_COST = 105.25;
             
     public Activity(String inDescription,Double inCost,LocalDate inActDate){
         
